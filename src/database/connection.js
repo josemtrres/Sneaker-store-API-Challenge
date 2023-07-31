@@ -38,7 +38,7 @@ const SpecialPrice = async (user_id, nombre_producto) => {
     if (user[0].metadata != 0) {
         return user[0].metadata.precios_especiales.find(producto => producto.nombre_producto === nombre_producto).precio_especial_personal
     } else {
-        return stock[0].precio_base
+        return product[0].precio_base
     }
 
 }
