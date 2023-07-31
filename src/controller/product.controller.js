@@ -5,7 +5,7 @@ const StockProd = async (req, res) => {
         const productsOnStock = await DatabaseConst.GetStock()
         res.json(productsOnStock)
     } catch (error) {
-
+        res.json(401);
     }
 }
 

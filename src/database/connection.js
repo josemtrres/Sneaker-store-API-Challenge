@@ -19,16 +19,13 @@ const GetStock = async () => {
     }
 }
 
-const ValidUser = async (user_id, nombre_producto) => {
+const ValidUser = async (user_id) => {
     const user = await User.find({ id: user_id })
-    const product = await Products.find({
-        existencia: { $gt: 0 },
-        nombre: nombre_producto
-    })
+
     if (!user) {
         return false;
     } else {
-        return product[0].precio_base
+        return true;
     }
 }
 
@@ -38,10 +35,10 @@ const SpecialPrice = async (user_id, nombre_producto) => {
         existencia: { $gt: 0 },
         nombre: nombre_producto
     });
-    const HavePrice = user.metadata?.length > 0
+    const HavePrice = user[0].metadata.precios_especiales.find(producto => producto.nombre_producto === nombre_producto).precio_especial_personal
 
-    if (HavePrice && product.nombre == nombre_producto) {
-        user.metadata.precios_especiales.map(nombre_producto == product.nombre)
+    if (HavePrice > 0) {
+        return HavePrice
     } else {
         return product[0].precio_base
     }

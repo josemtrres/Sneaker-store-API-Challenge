@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 
-// Define el esquema para los precios especiales
 const SpecialPriceSchema = new mongoose.Schema({
     nombre_producto: {
         type: String,
@@ -27,6 +26,4 @@ const UserSchema = new mongoose.Schema({
     },
 });
 
-const User = mongoose.model("users", UserSchema);
-
-export default User;
+export default mongoose.model("users", UserSchema);

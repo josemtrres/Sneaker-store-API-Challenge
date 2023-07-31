@@ -6,7 +6,7 @@ const SpeciaPrices = async (req, res) => {
         const NewPrice = await DatabaseConst.SpecialPrice(user_id, nombre_producto)
         res.json(NewPrice)
     } catch (error) {
-
+        res.json(401);
     }
 }
 
