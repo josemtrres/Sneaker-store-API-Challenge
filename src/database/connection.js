@@ -35,12 +35,10 @@ const SpecialPrice = async (user_id, nombre_producto) => {
         existencia: { $gt: 0 },
         nombre: nombre_producto
     });
-    const HavePrice = user[0].metadata.precios_especiales.find(producto => producto.nombre_producto === nombre_producto).precio_especial_personal
-
-    if (HavePrice > 0) {
-        return HavePrice
+    if (user[0].metadata != 0) {
+        return user[0].metadata.precios_especiales.find(producto => producto.nombre_producto === nombre_producto).precio_especial_personal
     } else {
-        return product[0].precio_base
+        return stock[0].precio_base
     }
 
 }
